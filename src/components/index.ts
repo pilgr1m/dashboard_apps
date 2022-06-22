@@ -1,1 +1,1 @@
-export * from './TestComponents'
+export * from './TestComponent'

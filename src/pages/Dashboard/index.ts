@@ -1,1 +1,1 @@
-export * from './Ecommerce'
+export * from './ECommerce'

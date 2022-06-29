@@ -21,7 +21,7 @@ import {
   Pyramid,
   Stacked,
 } from './pages'
-
+import { useStateContext } from './contexts'
 import './App.css'
 
 type Props = {
@@ -29,7 +29,9 @@ type Props = {
 }
 
 export const App: FC<Props> = () => {
-  const activeMenu = true
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { activeMenu } = useStateContext()
 
   return (
     <div>

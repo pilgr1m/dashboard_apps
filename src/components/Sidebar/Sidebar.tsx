@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { SiShopware } from 'react-icons/si'
 import { MdOutlineCancel } from 'react-icons/md'
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
-
+import { useStateContext } from '../../contexts'
 import { links } from '../../data/dummy'
 
 type Props = {
@@ -11,16 +11,20 @@ type Props = {
 }
 
 export const Sidebar: FC<Props> = () => {
-  const activeMenu = true
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const { activeMenu, setActiveMenu } = useStateContext()
 
   const activeLink = 'flex items-center- gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-white text-md m-2'
   const normalLink = 'flex items-center- gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2'
 
   const onClick = () => {
     console.log('click sidebar')
+    setActiveMenu(false)
   }
   const handleClose = () => {
     console.log('click handleClose')
+    setActiveMenu(!activeMenu)
   }
   const handleChoose = () => {
     console.log('click handleChoose')
@@ -37,7 +41,8 @@ export const Sidebar: FC<Props> = () => {
             <TooltipComponent content="Close Menu" position="BottomCenter">
               <button
                 type="button"
-                className="text-xl rounded-full p-3 hover:bg-light-gray block md:hidden"
+                // className="text-xl rounded-full p-3 hover:bg-light-gray block md:hidden"
+                className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
                 onClick={handleClose}
               >
                 <MdOutlineCancel />

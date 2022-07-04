@@ -1,8 +1,27 @@
-import React, { createContext, useContext, useMemo, useState } from 'react'
+import React, { createContext, Dispatch, SetStateAction, useContext, useMemo, useState } from 'react'
 
+type InitialStateType = {
+  chat: boolean
+  card: boolean
+  userProfile: boolean
+  notification: boolean
+}
+const InitialState:InitialStateType = {
+  chat: false,
+  card: false,
+  userProfile: false,
+  notification: false,
+}
+
+// TODO fix types
 type InitialStateContext = {
   activeMenu: boolean
-  setActiveMenu: (arg: any) => void
+  setActiveMenu: (arg: boolean) => void
+  screenSize: any
+  setScreenSize: (arg: any) => void
+  isClicked: InitialStateType
+  setIsClicked: Dispatch<SetStateAction<InitialStateType>>
+  handleClick: (arg: string) => void
   chat: boolean
   cart: boolean
   userProfile: boolean
@@ -18,6 +37,10 @@ const StateContext = createContext<InitialStateContext>({})
 // @ts-ignore
 export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true)
+  const [isClicked, setIsClicked] = useState(InitialState)
+  const [screenSize, setScreenSize] = useState(undefined)
+
+  const handleClick = (clicked:string) => setIsClicked({ ...InitialState, [clicked]: true })
 
   // const value = useMemo(() => ({ activeMenu, setActiveMenu }), [activeMenu])
 
@@ -27,7 +50,15 @@ export const ContextProvider = ({ children }) => {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // eslint-disable-next-line react/jsx-no-constructed-context-values
-      value={{ activeMenu, setActiveMenu }}
+      value={{
+        activeMenu,
+        setActiveMenu,
+        isClicked,
+        setIsClicked,
+        handleClick,
+        screenSize,
+        setScreenSize,
+      }}
     >
       { children }
     </StateContext.Provider>

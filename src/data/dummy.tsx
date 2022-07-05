@@ -22,6 +22,13 @@ import product5 from './product5.jpg'
 import product6 from './product6.jpg'
 import product7 from './product7.jpg'
 import product8 from './product8.jpg'
+import {
+  AxisLineModel,
+  LabelIntersectAction,
+  MajorTickLinesModel,
+  MinorGridLinesModel,
+  ValueType,
+} from '@syncfusion/ej2-react-charts'
 
 export const gridOrderImage = (props:any) => (
   <div>
@@ -3129,13 +3136,16 @@ export const dropdownData = [
     Time: 'May 2021',
   },
 ]
-export const SparklineAreaData = [
+export type SparklineAreaDataType = {
+  x: number,
+  yval: number
+}
+export const SparklineAreaData: SparklineAreaDataType[] = [
   { x: 1, yval: 2 },
   { x: 2, yval: 6 },
   { x: 3, yval: 8 },
   { x: 4, yval: 5 },
   { x: 5, yval: 10 },
-
 ]
 
 export const lineCustomSeries = [
@@ -3252,7 +3262,18 @@ export const stackedCustomSeries = [
 
 ]
 
-export const stackedPrimaryXAxis = {
+export type stackedPrimaryXAxisType = {
+  majorGridLines:MajorTickLinesModel,
+  minorGridLines: MajorTickLinesModel,
+  majorTickLines: MinorGridLinesModel,
+  minorTickLines: MinorGridLinesModel,
+  interval: number,
+  lineStyle: AxisLineModel,
+  labelIntersectAction? : LabelIntersectAction,
+  valueType? : ValueType
+}
+
+export const stackedPrimaryXAxis: stackedPrimaryXAxisType = {
   majorGridLines: { width: 0 },
   minorGridLines: { width: 0 },
   majorTickLines: { width: 0 },

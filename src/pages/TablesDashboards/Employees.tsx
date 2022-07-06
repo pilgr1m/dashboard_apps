@@ -4,41 +4,38 @@ import {
   ColumnsDirective,
   ColumnDirective,
   Page,
-  Selection,
+  Search,
   Toolbar,
   Inject,
-  Edit,
-  Sort,
-  Filter,
 } from '@syncfusion/ej2-react-grids'
 import { uniqueId } from 'lodash'
-import { customersData, customersGrid } from '../../data/dummy'
+
+import { employeesData, employeesGrid } from '../../data/dummy'
 import { Header } from '../../components'
 
 type Props = {
 
 }
 
-export const Customers: FC<Props> = () => {
+export const Employees: FC<Props> = () => {
   const a = 1
 
   return (
     <div className="m-2 md:m-10 p-2 md:p-10 bg-white rounded-3xl">
-      <Header category="Page" title="Customers" />
+      <Header category="Tables / Dashboards" title="Employees" />
       <GridComponent
-        dataSource={customersData}
+        dataSource={employeesData}
         allowPaging
         allowSorting
-        toolbar={['Delete']}
-        editSettings={{ allowDeleting: true, allowEditing: true }}
+        toolbar={['Search']}
         width="auto"
       >
         <ColumnsDirective>
-          { customersGrid.map((item) => (
+          { employeesGrid.map((item) => (
             <ColumnDirective key={uniqueId('keyColumnEmployees_')} {...item} />
           ))}
         </ColumnsDirective>
-        <Inject services={[Page, Toolbar, Filter, Sort, Edit, Selection]} />
+        <Inject services={[Page, Search, Toolbar]} />
       </GridComponent>
     </div>
   )

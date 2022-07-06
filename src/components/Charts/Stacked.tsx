@@ -39,13 +39,9 @@ export const Stacked: FC<Props> = ({ width, height }) => {
         services={[Legend, Category, StackingColumnSeries, Tooltip]}
       />
       <SeriesCollectionDirective>
-        {stackedCustomSeries.map((item, idx) => {
-          console.log('item')
-
-          return (
-            <SeriesDirective key={uniqueId(`${idx}_`)} {...item} />
-          )
-        })}
+        {stackedCustomSeries.map((item, idx) => (
+          <SeriesDirective key={uniqueId(`${idx}_`)} {...item} />
+        ))}
       </SeriesCollectionDirective>
     </ChartComponent>
   )

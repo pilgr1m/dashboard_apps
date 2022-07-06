@@ -23,7 +23,6 @@ export const Sidebar: FC<Props> = () => {
   const normalLink = 'flex items-center- gap-5 pl-4 pt-3 pb-2.5 rounded-lg text-md text-gray-700 dark:text-gray-200 dark:hover:text-black hover:bg-light-gray m-2'
 
   const handleClose = () => {
-    console.log('click handleClose')
     setActiveMenu(!activeMenu)
   }
 
@@ -52,21 +51,17 @@ export const Sidebar: FC<Props> = () => {
                 <p className="text-gray-400 m-3 mt-4 uppercase">
                   {item.title}
                 </p>
-                {item.links.map((link) => {
-                  console.log('link: ', link)
-
-                  return (
-                    <NavLink
-                      to={`/${link.name}`}
-                      key={link.name}
-                      onClick={handleCloseSidebar}
-                      className={({ isActive }) => (isActive ? activeLink : normalLink)}
-                    >
-                      {link.icon}
-                      <span className="capitalize">{link.name}</span>
-                    </NavLink>
-                  )
-                })}
+                {item.links.map((link) => (
+                  <NavLink
+                    to={`/${link.name}`}
+                    key={link.name}
+                    onClick={handleCloseSidebar}
+                    className={({ isActive }) => (isActive ? activeLink : normalLink)}
+                  >
+                    {link.icon}
+                    <span className="capitalize">{link.name}</span>
+                  </NavLink>
+                ))}
               </div>
             ))}
           </div>

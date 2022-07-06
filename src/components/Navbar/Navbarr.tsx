@@ -56,7 +56,6 @@ export const Navbar: FC<Props> = () => {
   } = useStateContext()
 
   useEffect(() => {
-    console.log('useEffect')
     const handleResize = () => setScreenSize(window.innerWidth)
 
     window.addEventListener('resize', handleResize)
@@ -76,14 +75,6 @@ export const Navbar: FC<Props> = () => {
 
   const handlerToggleMenu = () => setActiveMenu(!activeMenu)
   // const handleClick = (str: string) => str
-
-  // TODO checked
-
-  console.log('screenSize: ', screenSize)
-  console.log('isClicked.cart: ', isClicked.card)
-  console.log('isClicked.chat: ', isClicked.chat)
-  console.log('isClicked.notification: ', isClicked.notification)
-  console.log('isClicked.userProfile: ', isClicked.userProfile)
 
   return (
     <div className="flex justify-between  p-2 md:mx-6 relative">

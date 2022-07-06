@@ -33,6 +33,8 @@ export const App: FC<Props> = () => {
   // @ts-ignore
   const { activeMenu } = useStateContext()
 
+  console.log('')
+
   return (
     <div>
       <BrowserRouter>

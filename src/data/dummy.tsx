@@ -534,7 +534,7 @@ export const links = [
   },
 
   {
-    title: 'Pages',
+    title: 'Tables / Dashboards',
     links: [
       {
         name: 'orders',
@@ -551,7 +551,7 @@ export const links = [
     ],
   },
   {
-    title: 'Apps',
+    title: 'Mini Apps',
     links: [
       {
         name: 'calendar',

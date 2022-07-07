@@ -1,4 +1,12 @@
-import React, { createContext, Dispatch, SetStateAction, useContext, useMemo, useState } from 'react'
+import React, {
+  ChangeEventHandler,
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useContext,
+  useMemo,
+  useState,
+} from 'react'
 
 type InitialStateType = {
   chat: boolean
@@ -26,6 +34,14 @@ type InitialStateContext = {
   cart: boolean
   userProfile: boolean
   notification: boolean
+  currentColor: string,
+  setCurrentColor: Dispatch<SetStateAction<string>>,
+  currentMode: string,
+  setCurrentMode: Dispatch<SetStateAction<string>>,
+  themeSettings: boolean,
+  setThemeSettings: Dispatch<SetStateAction<boolean>>,
+  setMode: ChangeEventHandler<HTMLInputElement>,
+  setColor: (arg: string) => void,
 }
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -39,6 +55,26 @@ export const ContextProvider = ({ children }) => {
   const [activeMenu, setActiveMenu] = useState(true)
   const [isClicked, setIsClicked] = useState(InitialState)
   const [screenSize, setScreenSize] = useState(undefined)
+  //
+  // setColor, setMode, currentMode, currentColor, setThemeSettings
+  const [currentColor, setCurrentColor] = useState('#03C9D7')
+  const [currentMode, setCurrentMode] = useState('Light')
+  const [themeSettings, setThemeSettings] = useState(false)
+
+  // TODO fix any
+  const setMode = (e: any) => {
+    console.log('e: ', e)
+    console.log('e.target.value: ', e.target.value)
+    setCurrentMode(e.target.value)
+
+    localStorage.setItem('themeMode', e.target.value)
+  }
+
+  const setColor = (color: string) => {
+    setCurrentColor(color)
+
+    localStorage.setItem('colorMode', color)
+  }
 
   const handleClick = (clicked:string) => setIsClicked({ ...InitialState, [clicked]: true })
 
@@ -58,6 +94,14 @@ export const ContextProvider = ({ children }) => {
         handleClick,
         screenSize,
         setScreenSize,
+        currentColor,
+        setCurrentColor,
+        currentMode,
+        setCurrentMode,
+        setMode,
+        setColor,
+        themeSettings,
+        setThemeSettings,
       }}
     >
       { children }

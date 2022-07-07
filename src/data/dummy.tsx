@@ -498,7 +498,7 @@ export const employeesGrid = [
 
 export const links = [
   {
-    title: 'Dashboard',
+    title: 'ECommerce',
     links: [
       {
         name: 'ecommerce',
@@ -506,9 +506,8 @@ export const links = [
       },
     ],
   },
-
   {
-    title: 'Tables / Dashboards',
+    title: 'Tables',
     links: [
       {
         name: 'orders',
@@ -868,8 +867,8 @@ export const themeColors = [
     color: '#1E4DB7',
   },
   {
-    color: '#FB9678',
     name: 'orange-theme',
+    color: '#FB9678',
   },
 ]
 

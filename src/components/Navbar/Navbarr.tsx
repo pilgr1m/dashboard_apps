@@ -53,6 +53,7 @@ export const Navbar: FC<Props> = () => {
     handleClick,
     screenSize,
     setScreenSize,
+    currentColor,
   } = useStateContext()
 
   useEffect(() => {
@@ -82,7 +83,7 @@ export const Navbar: FC<Props> = () => {
         title="Menu"
         customFunc={handlerToggleMenu}
         icon={<AiOutlineMenu />}
-        color="blue"
+        color={currentColor}
         // dotColor="blue"
       />
 
@@ -93,7 +94,7 @@ export const Navbar: FC<Props> = () => {
           title="Card"
           customFunc={() => handleClick('card')}
           icon={<FiShoppingCart />}
-          color="blue"
+          color={currentColor}
           // dotColor="blue"
         />
         {/* chat */}
@@ -101,7 +102,7 @@ export const Navbar: FC<Props> = () => {
           title="Chat"
           customFunc={() => handleClick('chat')}
           icon={<BsChatLeft />}
-          color="blue"
+          color={currentColor}
           dotColor="#03C9D7"
         />
         {/* notification */}
@@ -109,7 +110,7 @@ export const Navbar: FC<Props> = () => {
           title="Notification"
           customFunc={() => handleClick('notification')}
           icon={<RiNotification3Line />}
-          color="blue"
+          color={currentColor}
           dotColor="#03C9D7"
         />
 

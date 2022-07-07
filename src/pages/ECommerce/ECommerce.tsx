@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const ECommerce: FC<Props> = () => {
-  const a = 1
+  const { currentColor } = useStateContext()
 
   return (
     <div className="mt-12">
@@ -31,7 +31,7 @@ export const ECommerce: FC<Props> = () => {
           <div className="mt-6">
             <Button
               color="white"
-              bgColor="blue"
+              bgColor={currentColor}
               text="Dowload"
               borderRadius="10px"
               size="md"
@@ -120,7 +120,7 @@ export const ECommerce: FC<Props> = () => {
               <div className="mt-10">
                 <Button
                   color="white"
-                  bgColor="blue"
+                  bgColor={currentColor}
                   text="Download Report"
                   borderRadius="10px"
                   size="md"

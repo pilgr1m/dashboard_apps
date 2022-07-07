@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { useStateContext } from '../../contexts'
 
 type Props = {
   color:string

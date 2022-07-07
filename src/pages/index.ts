@@ -1,4 +1,4 @@
 export * from './Apps'
 export * from './Charts'
-export * from './Dashboard'
-export * from './TablesDashboards'
+export * from './ECommerce'
+export * from './Tables'

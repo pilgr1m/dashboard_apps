@@ -2,6 +2,14 @@ module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   darkMode: 'class',
   theme: {
+    // colors: {
+    //   'blue-theme': '#1A97F5',
+    //   'green-theme': '#03C9D7',
+    //   'purple-theme': '#7352FF',
+    //   'red-theme': '#FF5C8E',
+    //   'indigo-theme': '#1E4DB7',
+    //   'orange-theme': '#FB9678',
+    // },
     fontFamily: {
       display: ['Open Sans', 'sans-serif'],
       body: ['Open Sans', 'sans-serif'],

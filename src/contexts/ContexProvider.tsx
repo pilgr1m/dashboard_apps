@@ -63,8 +63,6 @@ export const ContextProvider = ({ children }) => {
 
   // TODO fix any
   const setMode = (e: any) => {
-    console.log('e: ', e)
-    console.log('e.target.value: ', e.target.value)
     setCurrentMode(e.target.value)
 
     localStorage.setItem('themeMode', e.target.value)

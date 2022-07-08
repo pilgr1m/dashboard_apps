@@ -24,6 +24,7 @@ import product7 from './product7.jpg'
 import product8 from './product8.jpg'
 import {
   AxisLineModel,
+  ChartRangePadding,
   LabelIntersectAction,
   MajorTickLinesModel,
   MinorGridLinesModel,
@@ -137,7 +138,16 @@ const customerGridStatus = (props:any) => (
   </div>
 )
 
-export const areaPrimaryXAxis = {
+export type areaPrimaryXAxisType ={
+  valueType?: ValueType,
+  labelFormat: 'y',
+  majorGridLines: { width: 0 },
+  intervalType: 'Years',
+  edgeLabelPlacement: 'Shift',
+  labelStyle: { color: 'gray' },
+}
+
+export const areaPrimaryXAxis: areaPrimaryXAxisType = {
   valueType: 'DateTime',
   labelFormat: 'y',
   majorGridLines: { width: 0 },
@@ -156,7 +166,14 @@ export const areaPrimaryYAxis = {
   labelStyle: { color: 'gray' },
 
 }
-export const barPrimaryXAxis = {
+
+export type barPrimaryXAxisType = {
+  valueType?: ValueType,
+  interval: 1,
+  majorGridLines: { width: 0 },
+}
+
+export const barPrimaryXAxis: barPrimaryXAxisType = {
   valueType: 'Category',
   interval: 1,
   majorGridLines: { width: 0 },
@@ -322,28 +339,35 @@ export const colorMappingData = [
 export const rangeColorMapping = [
   {
     label: '1°C to 10°C',
-    start: '1',
-    end: '10',
-    colors: colorMappingData[1],
+    start: 1,
+    end: 10,
+    colors: ['#FFFF99'],
   },
 
   {
     label: '11°C to 20°C',
-    start: '11',
-    end: '20',
-    colors: colorMappingData[2],
+    start: 11,
+    end: 20,
+    colors: ['#FFA500'],
   },
 
   {
     label: '21°C to 30°C',
-    start: '21',
-    end: '30',
-    colors: colorMappingData[3],
+    start: 21,
+    end: 30,
+    colors: ['#FF4040'],
+    // colors: colorMappingData[3], - old
   },
 
 ]
 
-export const ColorMappingPrimaryXAxis = {
+export type ColorMappingPrimaryXAxisType = {
+  valueType?: ValueType,
+  majorGridLines: { width: 0 },
+  title: 'Months'
+}
+
+export const ColorMappingPrimaryXAxis: ColorMappingPrimaryXAxisType = {
   valueType: 'Category',
   majorGridLines: { width: 0 },
   title: 'Months',
@@ -357,7 +381,15 @@ export const ColorMappingPrimaryYAxis = {
   title: 'Temperature',
 }
 
-export const FinancialPrimaryXAxis = {
+export type FinancialPrimaryXAxisType = {
+  valueType?: ValueType,
+  minimum: Date,
+  maximum: Date,
+  crosshairTooltip: { enable: true },
+  majorGridLines: { width: 0 },
+}
+
+export const FinancialPrimaryXAxis: FinancialPrimaryXAxisType = {
   valueType: 'DateTime',
   minimum: new Date('2016, 12, 31'),
   maximum: new Date('2017, 9, 30'),
@@ -374,7 +406,16 @@ export const FinancialPrimaryYAxis = {
   majorTickLines: { width: 0 },
 }
 
-export const LinePrimaryXAxis = {
+export type LinePrimaryXAxisType = {
+  valueType? : ValueType,
+  labelFormat: string,
+  intervalType: 'Years',
+  edgeLabelPlacement: 'Shift',
+  majorGridLines: { width: 0 },
+  background: 'white',
+}
+
+export const LinePrimaryXAxis: LinePrimaryXAxisType = {
   valueType: 'DateTime',
   labelFormat: 'y',
   intervalType: 'Years',
@@ -383,7 +424,20 @@ export const LinePrimaryXAxis = {
   background: 'white',
 }
 
-export const LinePrimaryYAxis = {
+// TODO fixed types
+
+export type LinePrimaryYAxisType = {
+  labelFormat : '{value}%'
+  rangePadding? : ChartRangePadding,
+  minimum: 0,
+  maximum: 100,
+  interval: number,
+  lineStyle: { width: 0 },
+  majorTickLines: { width: 0 },
+  minorTickLines: { width: 0 },
+}
+
+export const LinePrimaryYAxis: LinePrimaryYAxisType = {
   labelFormat: '{value}%',
   rangePadding: 'None',
   minimum: 0,

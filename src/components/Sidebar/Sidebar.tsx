@@ -15,7 +15,9 @@ export const Sidebar: FC<Props> = () => {
   // @ts-ignore
   const { activeMenu, setActiveMenu, screenSize, currentColor } = useStateContext()
 
-  const handleCloseSidebar = () => {
+  console.log('activeMenu: ', activeMenu)
+
+  const handleCloseForMobile = () => {
     if (activeMenu && screenSize <= 900) setActiveMenu(false)
   }
 
@@ -26,19 +28,28 @@ export const Sidebar: FC<Props> = () => {
     setActiveMenu(!activeMenu)
   }
 
+  const styles = ({ isActive }:any) => ({ backgroundColor: isActive ? currentColor : '' })
+
   return (
-    <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:overflow-hidden pb-10">
+    <div className="ml-3 h-screen md:overflow-hidden overflow-auto md:hover:overflow-auto pb-10">
       {activeMenu && (
         <div>
           <div className="flex justify-between items-center">
-            <Link to="/" onClick={handleCloseSidebar} className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900">
-              <SiShopware /> <span>Dashboard</span>
+            <Link
+              to="/"
+              onClick={handleCloseForMobile}
+              className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900"
+            >
+              <SiShopware style={{ color: currentColor }} />
+              <span style={{ color: currentColor }}>Dashboard</span>
             </Link>
             <TooltipComponent content="Close Menu" position="BottomCenter">
               <button
                 type="button"
-                className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 block md:hidden"
+                // className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 mr-4 block md:hidden"
+                className="text-xl rounded-full p-3 hover:bg-light-gray mt-4 mr-4 block"
                 onClick={handleClose}
+                style={{ color: currentColor }}
               >
                 <MdOutlineCancel />
               </button>
@@ -54,9 +65,10 @@ export const Sidebar: FC<Props> = () => {
                   <NavLink
                     to={`/${link.name}`}
                     key={link.name}
-                    onClick={handleCloseSidebar}
+                    onClick={handleCloseForMobile}
                     className={({ isActive }) => (isActive ? activeLink : normalLink)}
-                    style={({ isActive }) => ({ backgroundColor: isActive ? currentColor : '' })}
+                    // style={({ isActive }) => ({ backgroundColor: isActive ? currentColor : '' })}
+                    style={styles}
                   >
                     {link.icon}
                     <span className="capitalize">{link.name}</span>

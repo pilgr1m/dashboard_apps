@@ -75,17 +75,21 @@ export const Navbar: FC<Props> = () => {
   }, [screenSize])
 
   const handlerToggleMenu = () => setActiveMenu(!activeMenu)
-  // const handleClick = (str: string) => str
 
   return (
-    <div className="flex justify-between  p-2 md:mx-6 relative">
-      <NavButton
-        title="Menu"
-        customFunc={handlerToggleMenu}
-        icon={<AiOutlineMenu />}
-        color={currentColor}
-        // dotColor="blue"
-      />
+    <div className="flex justify-between p-2 md:mx-6 relative">
+
+      {
+        !activeMenu && (
+        <NavButton
+          title="Menu"
+          customFunc={handlerToggleMenu}
+          icon={<AiOutlineMenu />}
+          color={currentColor}
+          // dotColor="blue"
+        />
+        )
+      }
 
       {/* buttons  */}
       <div className="flex">
